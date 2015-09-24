@@ -1,1 +1,4 @@
+# [user@]host[:build-directory][,envfile]
+# bran@freebsd.example.com:/local/build,$HOME/.build/c99
+
 root@10.3.3.185:/root
