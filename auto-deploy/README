@@ -17,8 +17,8 @@ How to use this script?
     cp -r .build $HOME/
  
  2 ) configure file
-    add remote server configure in ./build/userhosts
-	add packages configure in ./build/directories
+    add remote server configure in $HOME/.build/userhosts
+	add packages configure in $HOME/.build/directories
  
  3 ) use like this
     sh auto-deployments.sh figlet-2.2.5
