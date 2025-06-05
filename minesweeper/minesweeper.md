@@ -6,7 +6,7 @@
 ### 主体框架
 
 ```
-newgame 'n'		#初始化
+newgame 'n'		                                                          #初始化
 
 while :; do
 
@@ -18,7 +18,7 @@ while :; do
 
   echo -en "\b ${piece[board[cy*mx+cx]]} \b\b"
 
-  (( status!=1 )) && [[ "$a" != [nNmMrq] ]] && continue                #检查，如果gameover 控制键失效只能重开或者退出
+  (( status!=1 )) && [[ "$a" != [nNmMrq] ]] && continue             #检查，如果gameover 控制键失效只能重开或者退出
 
   case "$a" in
     'h'|'a'|'D'|'4') (( cx>0?cx--:0 )) ;;                           #向左移动
