@@ -10,7 +10,7 @@ newgame 'n'		#初始化
 
 while :; do
 
-  tput 'cup' $(( cy+2 )) $(( cx*2 ))					#移动光标
+  tput 'cup' $(( cy+2 )) $(( cx*2 ))					                          #移动光标
   echo -en "\e[1;40;37m[${piece[board[cy*mx+cx]]}\e[1;37m]\b\b"
 
   read -s -n 1 a
@@ -18,18 +18,18 @@ while :; do
 
   echo -en "\b ${piece[board[cy*mx+cx]]} \b\b"
 
-  (( status!=1 )) && [[ "$a" != [nNmMrq] ]] && continue		#检查，如果gameover 控制键失效只能重开或者退出
+  (( status!=1 )) && [[ "$a" != [nNmMrq] ]] && continue                #检查，如果gameover 控制键失效只能重开或者退出
 
   case "$a" in
-    'h'|'a'|'D'|'4') (( cx>0?cx--:0 )) ;;					#向左移动
-    'j'|'s'|'B'|'2') (( cy<my-1?cy++:0 )) ;;			#向下
-    'k'|'w'|'A'|'8') (( cy>0?cy--:0 )) ;;					#向上
-    'l'|'d'|'C'|'6') (( cx<mx-1?cx++:0 )) ;;			#向右
-    'g'|' '|'') makestep ;;									#排雷
-    'f'|'0') putflag ;;											#打标
-    'n'|'N'|'m'|'M') newgame "$a" ;;					#重开，nMmM分别对应size：S  M  L XL
-    'r') drawboard ;;										#画板
-    'q') break ;;												#退出
+    'h'|'a'|'D'|'4') (( cx>0?cx--:0 )) ;;                           #向左移动
+    'j'|'s'|'B'|'2') (( cy<my-1?cy++:0 )) ;;                        #向下
+    'k'|'w'|'A'|'8') (( cy>0?cy--:0 )) ;;                           #向上
+    'l'|'d'|'C'|'6') (( cx<mx-1?cx++:0 )) ;;                        #向右
+    'g'|' '|'') makestep ;;                                         #排雷
+    'f'|'0') putflag ;;                                             #打标
+    'n'|'N'|'m'|'M') newgame "$a" ;;                                #重开，nMmM分别对应size：S  M  L XL
+    'r') drawboard ;;                                               #画板
+    'q') break ;;                                                   #退出
   esac
 
 done
