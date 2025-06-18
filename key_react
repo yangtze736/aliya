@@ -1,0 +1,88 @@
+#!/bin/bash
+
+function draw_title() {
+        local str width height length
+
+        width=$(tput cols)
+        height=$(tput lines)
+        #str="Width = $width Height = $height"
+        str="System Admin Menu"
+        length=${#str}
+        clear
+        #tput cup $((height / 2)) $(((width / 2) - (length / 2)))
+        tput cup $((height / 8)) $(((width / 2) - (length / 2)))
+        echo "$str"
+}
+
+function quit {
+        local -l answer
+        echo -n "Really quit? (yes/no) "
+        read answer
+        if [ "${answer:0:1}" = "y" ]; then
+                exit
+        fi
+}
+
+
+function key_react {
+        let change=0
+        read -d '' -sn 1
+
+        case $REPLY in
+                #k) apply_push up;;
+                k) echo "up";;
+                #j) apply_push down;;
+                j) echo "down";;
+                #l) apply_push right;;
+                l) echo "right";;
+                #h) apply_push left;;
+                h) echo "left";;
+
+                #w) apply_push up;;
+                w) echo "up";;
+                #s) apply_push down;;
+                s) echo "down";;
+                #d) apply_push right;;
+                d) echo "right";;
+                #a) apply_push left;;
+                a) echo "left";;
+
+                q) quit;;
+        esac
+
+}
+
+function start {
+        sleep 1
+        echo ""
+
+        while true; do
+                #print_board
+                key_react
+                #let change && generate_piece
+                #first_round=-1
+                #let pieces==fields_total && {
+                # check_moves
+                # let moves==0 && end_game 0 #lose the game
+                #}
+        done
+}
+
+draw_title
+echo "Pls. choose your profession?"
+select var in "Begin" "Quit"
+do
+        echo "\$REPLY is $REPLY"
+        #echo "Your profession is $var"
+
+        case $var in
+                "Begin")
+                        start ;;
+
+                "Quit")
+                        quit ;;
+                *)
+                        #clear
+                        echo "Sorry, wrong selection";;
+        esac
+done
